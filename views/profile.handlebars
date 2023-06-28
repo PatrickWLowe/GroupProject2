@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Add new food:</h3>
+
+    <form class="form new-food-form">
+      <div class="form-group">
+        <label for="food-name">food name:</label>
+        <input class="form-input" type="text" id="food-name" name="food-name" />
+      </div>
+      <div class="form-group">
+        <label for="food-funding">weight (g):</label>
+        <input class="form-input" type="number" id="food-funding" name="food-funding" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+
+  
+  <div class="col-md-6 food-list">
+    <h3>Current Foods:</h3>
+
+    
+  </div>
+</div>
+
+<script src="./js/profile.js"></script>
