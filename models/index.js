@@ -6,4 +6,8 @@ User.hasMany(Food, {
   onDelete: 'CASCADE'
 });
 
+Food.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
 module.exports = { User, Food };
