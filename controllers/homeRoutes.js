@@ -9,10 +9,23 @@ router.get('/', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Food }],
     });
+    const foodData = await Food.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
 
+    const foods = foodData.map((food) => food.get({ plain: true }));
     const user = userData.get({ plain: true });
 
     res.render('profile', {
+      foods,
       ...user,
       logged_in: true
     });
@@ -34,18 +47,7 @@ router.get('/login', (req, res) => {
 //Render the profile
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Food }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
+    res.redirect('/');
   } catch (err) {
     res.status(500).json(err);
   }

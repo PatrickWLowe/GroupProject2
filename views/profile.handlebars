@@ -14,8 +14,8 @@
         <input class="form-input" type="text" id="food-name" name="food-name" />
       </div>
       <div class="form-group">
-        <label for="food-funding">weight (g):</label>
-        <input class="form-input" type="number" id="food-funding" name="food-funding" />
+        <label for="food-weight">weight (g):</label>
+        <input class="form-input" type="number" id="food-weight" name="food-weight" />
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Add</button>
@@ -26,7 +26,16 @@
   
   <div class="col-md-6 food-list">
     <h3>Current Foods:</h3>
-
+    {{#each foods as |food|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/food/{{food.id}}">{{food.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{food.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
     
   </div>
 </div>
