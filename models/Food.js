@@ -22,6 +22,22 @@ Food.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    protein: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    calories: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    fat: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    carbs: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

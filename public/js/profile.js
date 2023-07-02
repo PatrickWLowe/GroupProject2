@@ -5,19 +5,49 @@ const newFormHandler = async (event) => {
   const food_weight = document.querySelector('#food-weight').value.trim();
 
   if (name && food_weight) {
-    const response = await fetch(`/api/foods`, {
+    const edamamAPIResponse = await fetch (`/api/edamam` , {
       method: 'POST',
-      body: JSON.stringify({ name, food_weight }),
+      body: JSON.stringify({ 
+        name, 
+        food_weight,
+      }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
+    
+    if ( edamamAPIResponse.ok){
+      const edamamAPIResponseParsed = await edamamAPIResponse.json();
+      console.log(edamamAPIResponseParsed);
+      const protein = edamamAPIResponseParsed.totalNutrients.PROCNT.quantity;
+      const calories = edamamAPIResponseParsed.calories;
+      const fat = edamamAPIResponseParsed.totalNutrients.FAT.quantity;
+      const carbs = edamamAPIResponseParsed.totalNutrients['CHOCDF.net'].quantity;
 
-    if (response.ok) {
-      document.location.replace('/');
+      const response = await fetch(`/api/foods`, {
+        method: 'POST',
+        body: JSON.stringify({ 
+          name, 
+          food_weight,
+          protein,
+          calories,
+          fat,
+          carbs,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        document.location.replace('/');
+      } else {
+        alert('Failed to create food');
+      }
     } else {
       alert('Failed to create food');
     }
+    
   }
 };
 
