@@ -1,3 +1,5 @@
+renderChart();
+
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -51,8 +53,43 @@ const newFormHandler = async (event) => {
   }
 };
 
+async function renderChart() {
+  const response = await fetch (`/api/getTotals` , {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }).then((response) => response.json())
+  .then((data) => data)
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Carbohydrates', 'Fats', 'Protein'],
+      datasets: [{
+        label: '# of grams',
+        data: [response.totalCarbs, response.totalFats, response.totalProtein],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+
+
+
 const delButtonHandler = async (event) => {
-  console.log("Attempting delete ")
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
