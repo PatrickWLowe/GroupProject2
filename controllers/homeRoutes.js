@@ -34,6 +34,30 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+
+router.get('/food/:id', withAuth, async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const foodData = await Food.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const food = foodData.get({ plain: true });
+
+    res.render('food', {
+      ...food,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {

@@ -18,8 +18,8 @@ Food.init(
     description: {
       type: DataTypes.STRING,
     },
-    food_weight: {
-      type: DataTypes.INTEGER,
+    food_amount: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     protein: {

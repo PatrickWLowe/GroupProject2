@@ -22,3 +22,16 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+ .food-delete{
+  opacity:0;
+  transition:opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+}
+.food-name:hover .food-delete {
+  opacity: 1;
+  transition:opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+} 
