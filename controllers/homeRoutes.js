@@ -23,7 +23,6 @@ router.get('/', withAuth, async (req, res) => {
       ],
     });
     
-    
     const totalCalories = await Food.sum('calories', {where: {user_id: req.session.user_id}});
     const totalProtein = await Food.sum('protein', {where: {user_id: req.session.user_id}});
     const totalFat = await Food.sum('fat', {where: {user_id: req.session.user_id}});

@@ -19,12 +19,13 @@ const newFormHandler = async (event) => {
     });
     
     if ( edamamAPIResponse.ok){
+      
       const edamamAPIResponseParsed = await edamamAPIResponse.json();
       console.log(edamamAPIResponseParsed);
-      const protein = edamamAPIResponseParsed.totalNutrients.PROCNT.quantity;
-      const calories = edamamAPIResponseParsed.calories;
-      const fat = edamamAPIResponseParsed.totalNutrients.FAT.quantity;
-      const carbs = edamamAPIResponseParsed.totalNutrients['CHOCDF.net'].quantity;
+      const protein = edamamAPIResponseParsed?.totalNutrients?.PROCNT?.quantity || 0;
+      const calories = edamamAPIResponseParsed?.calories || 0;
+      const fat = edamamAPIResponseParsed?.totalNutrients?.FAT?.quantity || 0;
+      const carbs = edamamAPIResponseParsed?.totalNutrients['CHOCDF.net']?.quantity || 0;
 
       const response = await fetch(`/api/foods`, {
         method: 'POST',
@@ -67,12 +68,13 @@ async function renderChart() {
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
+    
     type: 'pie',
     data: {
       labels: ['Carbohydrates', 'Fats', 'Protein'],
       datasets: [{
         label: '# of grams',
-        data: [response.totalCarbs, response.totalFats, response.totalProtein],
+        data: [response.totalCarbs, response.totalFat, response.totalProtein],
         borderWidth: 1
       }]
     },
