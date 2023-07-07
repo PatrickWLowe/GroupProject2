@@ -2,14 +2,14 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#food-name').value.trim();
-  const food_weight = document.querySelector('#food-weight').value.trim();
+  const food_amount = document.querySelector('#food-weight').value.trim();
 
-  if (name && food_weight) {
+  if (name && food_amount) {
     const edamamAPIResponse = await fetch (`/api/edamam` , {
       method: 'POST',
       body: JSON.stringify({ 
         name, 
-        food_weight,
+        food_amount,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const newFormHandler = async (event) => {
         method: 'POST',
         body: JSON.stringify({ 
           name, 
-          food_weight,
+          food_amount,
           protein,
           calories,
           fat,
@@ -52,6 +52,7 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+  console.log("Attempting delete ")
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
