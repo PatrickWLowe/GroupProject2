@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Food, User } = require('../models');
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection');
 
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -17,14 +18,28 @@ router.get('/', withAuth, async (req, res) => {
         {
           model: User,
           attributes: ['name'],
+            
         },
       ],
     });
+    
+    
+    const totalCalories = await Food.sum('calories', {where: {user_id: req.session.user_id}});
+    const totalProtein = await Food.sum('protein', {where: {user_id: req.session.user_id}});
+    const totalFat = await Food.sum('fat', {where: {user_id: req.session.user_id}});
+    const totalCarbs = await Food.sum('carbs', {where: {user_id: req.session.user_id}});
 
+  
+
+    //const totals = totalData.get({ plain: true });
     const foods = foodData.map((food) => food.get({ plain: true }));
     const user = userData.get({ plain: true });
 
     res.render('profile', {
+      totalCalories,
+      totalProtein,
+      totalFat,
+      totalCarbs,
       foods,
       ...user,
       logged_in: true
