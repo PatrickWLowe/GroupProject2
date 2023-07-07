@@ -7,5 +7,8 @@ module.exports = {
     // format large numbers with commas
     return parseInt(amount).toLocaleString();
   },
+  format_toInt: (amount) => {
+    return ~~amount;
+  }
   
 };
