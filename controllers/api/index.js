@@ -14,5 +14,3 @@ router.use('/getDay', getDay);
 
 
 module.exports = router;
-
-
