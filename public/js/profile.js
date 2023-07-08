@@ -79,11 +79,20 @@ async function renderChart() {
       }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      plugins: {
+        legend: {
+          display: false
         }
-      }
+      },
+      responsive: false,
+      // scales: {
+      //   y: {
+      //     gridLines: {
+      //       display:false
+      //     },
+      //     beginAtZero: true
+      //   }
+      // }
     }
   });
 }
