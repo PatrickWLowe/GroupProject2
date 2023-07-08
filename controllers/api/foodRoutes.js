@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const { Food } = require('../../models');
 const withAuth = require('../../utils/auth');
+const dayjs = require('dayjs');
 
 router.post('/', withAuth, async (req, res) => {
   try {
     const newFood = await Food.create({
+      date_added: dayjs().format('MM/DD/YYYY'),
       ...req.body,
       user_id: req.session.user_id,
     });
