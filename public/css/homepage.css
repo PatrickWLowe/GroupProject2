@@ -1,0 +1,92 @@
+
+body{
+
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  align-items: center;}
+
+  .column-1{
+    float: left;
+    width: 50%;
+   
+  }
+  .column-2{
+    float: right;
+    width: 50%;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 900px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+.display-4{animation: fadeIn 4s;
+    -webkit-animation: fadeIn 4s;
+    -moz-animation: fadeIn 4s;
+    -o-animation: fadeIn 4s;
+    -ms-animation: fadeIn 4s;}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .container {
+    height: 500px;
+    position: relative;
+
+  }
+  
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .signupButton{
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    padding: 14px 28px;
+    font-size: 60px;
+    font-family: fantasy;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .startSignUp{
+    background-color: blue;
+  }
+
+  
