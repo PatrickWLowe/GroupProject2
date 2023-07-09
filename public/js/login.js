@@ -52,6 +52,14 @@ $(function() {
     }
   };
 
+  const showSignupForm = async(e) =>{
+    e.preventDefault();
+    console.log(event)
+    $(".signupButton").hide();
+    $(".signupPortal").show();
+  }
+
   $( ".signup-form" ).on( "submit", loginFormHandler)
   $( ".signup-form" ).on( "submit", signupFormHandler)
+  $(".signupButton").click(showSignupForm)
 });
