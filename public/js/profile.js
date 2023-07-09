@@ -22,15 +22,21 @@ const newFormHandler = async (event) => {
       
       const edamamAPIResponseParsed = await edamamAPIResponse.json();
       console.log(edamamAPIResponseParsed);
-      const protein = edamamAPIResponseParsed?.totalNutrients?.PROCNT?.quantity || 0;
-      const calories = edamamAPIResponseParsed?.calories || 0;
-      const fat = edamamAPIResponseParsed?.totalNutrients?.FAT?.quantity || 0;
-      const carbs = edamamAPIResponseParsed?.totalNutrients['CHOCDF.net']?.quantity || 0;
+      const protein = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.PROCNT || 0;
+      const calories = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.ENERC_KCAL || 0;
+      const fat = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.FAT || 0;
+      const carbs = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.CHOCDF || 0; 
+      const image = edamamAPIResponseParsed?.parsed[0]?.food?.image || 0; 
 
+      if (image == 0){
+        alert('Failed to create food');
+        return;
+      }
       const response = await fetch(`/api/foods`, {
         method: 'POST',
         body: JSON.stringify({ 
           name, 
+          image,
           food_amount,
           protein,
           calories,
