@@ -65,6 +65,7 @@ async function renderChart() {
   .catch((error) => {
     console.error('Error:', error);
   });
+  console.log(response);
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {

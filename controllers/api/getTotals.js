@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 const { Food } = require('../../models');
+const dayjs = require('dayjs');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-      const totalCalories = await Food.sum('calories', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
-      const totalProtein = await Food.sum('protein', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
-      const totalFat = await Food.sum('fat', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
-      const totalCarbs = await Food.sum('carbs', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
+        const totalCalories = await Food.sum('calories', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
+        const totalProtein = await Food.sum('protein', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
+        const totalFat = await Food.sum('fat', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
+        const totalCarbs = await Food.sum('carbs', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
         
         const response = {
             totalCalories,

@@ -27,7 +27,6 @@
 
   
   <div class="col-md-6">
-    <h3>Some Graphic:</h3>
     <div>
       <canvas id="myChart" style="width: 100; height: 100;"></canvas>
     </div>
@@ -36,16 +35,6 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Some Info:</h3>
-    <h3>Test: </h3>
-    <p>Calories: {{format_toInt totalCalories}}</p>
-    <p>Carbs: {{format_toInt totalCarbs}}</p>
-    <p>Protien: {{format_toInt totalProtein}}</p>
-    <p>Fats: {{format_toInt totalFat}}</p>
-
-  </div>
-
   <div class="col-md-6 food-list">
     
     <h3>Current Foods:</h3>
@@ -61,6 +50,16 @@
     {{/each}}
     
   </div>
+  <div class="col-md-6">
+    <h3>Totals: </h3>
+    <p>Calories: {{format_toInt totalCalories}}</p>
+    <p>Carbs: {{format_toInt totalCarbs}}</p>
+    <p>Protien: {{format_toInt totalProtein}}</p>
+    <p>Fats: {{format_toInt totalFat}}</p>
+
+  </div>
+
+  
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
