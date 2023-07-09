@@ -19,6 +19,7 @@ html {
  */
 body {
   margin: 0;
+  
 }
 
 /**
@@ -26,6 +27,7 @@ body {
  */
 main {
   display: block;
+
 }
 
 /**
@@ -35,6 +37,7 @@ main {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  text-align: center;
 }
 
 /* Grouping content
