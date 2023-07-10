@@ -7,7 +7,7 @@ router.post('/', withAuth, async (req, res) => {
     try {
         const food_amount = req.body.food_amount;
         const name = req.body.name;
-        const URL = `https://api.edamam.com/api/food-database/v2/parser?app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}&nutrition-type=logging&ingr=${food_amount}%20${name}`;
+        const URL = `https://api.edamam.com/api/nutrition-data?app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}&nutrition-type=logging&ingr=${food_amount}%20${name}`;
         console.log(URL);
         const edamamAPIResponse = await fetch (URL,
             {
