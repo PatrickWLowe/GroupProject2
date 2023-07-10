@@ -7,19 +7,18 @@ const newFormHandler = async (event) => {
   const food_amount = document.querySelector('#food-weight').value.trim();
 
   if (name && food_amount) {
-    const edamamAPIResponse = await fetch (`/api/edamam` , {
+    const edamamAPIResponse = await fetch(`/api/edamam`, {
       method: 'POST',
-      body: JSON.stringify({ 
-        name, 
+      body: JSON.stringify({
+        name,
         food_amount,
       }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    
-    if ( edamamAPIResponse.ok){
-      
+
+    if (edamamAPIResponse.ok) {
       const edamamAPIResponseParsed = await edamamAPIResponse.json();
       console.log(edamamAPIResponseParsed);
       const protein = edamamAPIResponseParsed?.totalNutrients?.PROCNT?.quantity || 0;
@@ -50,40 +49,41 @@ const newFormHandler = async (event) => {
     } else {
       alert('Failed to create food');
     }
-    
   }
 };
 
 async function renderChart() {
-  const response = await fetch (`/api/getTotals` , {
+  const response = await fetch(`/api/getTotals`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-    }
-  }).then((response) => response.json())
-  .then((data) => data)
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   console.log(response);
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
-    
     type: 'pie',
     data: {
       labels: ['Carbohydrates', 'Fats', 'Protein'],
-      datasets: [{
-        label: '# of grams',
-        data: [response.totalCarbs, response.totalFat, response.totalProtein],
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: '# of grams',
+          data: [response.totalCarbs, response.totalFat, response.totalProtein],
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
       plugins: {
         legend: {
-          display: false
-        }
+          display: false,
+        },
       },
       responsive: false,
       // scales: {
@@ -94,12 +94,9 @@ async function renderChart() {
       //     beginAtZero: true
       //   }
       // }
-    }
+    },
   });
 }
-
-
-
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {

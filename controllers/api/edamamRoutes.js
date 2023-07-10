@@ -2,7 +2,6 @@ const router = require('express').Router();
 require('dotenv').config();
 const withAuth = require('../../utils/auth');
 
-
 router.post('/', withAuth, async (req, res) => {
     try {
         const food_amount = req.body.food_amount;

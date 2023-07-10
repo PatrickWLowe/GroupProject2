@@ -9,6 +9,5 @@ module.exports = {
   },
   format_toInt: (amount) => {
     return ~~amount;
-  }
-  
+  },
 };
