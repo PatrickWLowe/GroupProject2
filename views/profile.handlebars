@@ -1,9 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="./css/profilepage.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/profile.js"></script>
+
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
-
 
 <div class="row mt-4">
   <div class="col-md-6">
@@ -23,48 +28,34 @@
       </div>
     </form>
   </div>
-  
-
-  
   <div class="col-md-6">
     <div>
       <canvas id="myChart" style="width: 100; height: 100; margin: auto;"></canvas>
     </div>
-    
   </div>
 </div>
 <div class="row mt-4">
   <div class="col-md-6 food-list">
-    
     <h3>Current Foods:</h3>
     {{#each foods as |food|}}
     <div class="row mb-2 food-name">
-      <div  class="col-md-8 ">
+      <div class="col-md-8 ">
         <h4><a href="/food/{{food.id}}">{{food.name}}</a></h4>
       </div>
-      <div  class="col-md-4 ">
+      <div class="col-md-4 ">
         <img src="{{food.image}}" alt="" style="width: 64px; height: 64px;">
         <button class="btn btn-sm btn-danger food-delete" data-id="{{food.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
-    
   </div>
   <div class="col-md-6" style="text-align: center;">
-    <div >
+    <div>
       <h3>Totals: </h3>
       <p>Calories: {{format_toInt totalCalories}}</p>
       <p>Carbs: {{format_toInt totalCarbs}}</p>
-      <p>Protien: {{format_toInt totalProtein}}</p>
+      <p>Protein: {{format_toInt totalProtein}}</p>
       <p>Fats: {{format_toInt totalFat}}</p>
     </div>
-    
-
   </div>
-
-  
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./js/profile.js"></script>
