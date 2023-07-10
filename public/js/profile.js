@@ -21,15 +21,17 @@ const newFormHandler = async (event) => {
     if (edamamAPIResponse.ok) {
       const edamamAPIResponseParsed = await edamamAPIResponse.json();
       console.log(edamamAPIResponseParsed);
-      const protein = edamamAPIResponseParsed?.totalNutrients?.PROCNT?.quantity || 0;
+      const protein =
+        edamamAPIResponseParsed?.totalNutrients?.PROCNT?.quantity || 0;
       const calories = edamamAPIResponseParsed?.calories || 0;
       const fat = edamamAPIResponseParsed?.totalNutrients?.FAT?.quantity || 0;
-      const carbs = edamamAPIResponseParsed?.totalNutrients['CHOCDF.net']?.quantity || 0;
-      
+      const carbs =
+        edamamAPIResponseParsed?.totalNutrients['CHOCDF.net']?.quantity || 0;
+
       const response = await fetch(`/api/foods`, {
         method: 'POST',
-        body: JSON.stringify({ 
-          name, 
+        body: JSON.stringify({
+          name,
           food_amount,
           protein,
           calories,

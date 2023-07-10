@@ -1,50 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
-<head>
-  <script src="https://developer.edamam.com/attribution/badge.js"></script>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You Are What You Eat!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-  
-</head>
+  <head>
+    <script src='https://developer.edamam.com/attribution/badge.js'></script>
 
-<body>
-  
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">You Are What You Eat!</a>
-        <div id="edamam-badge" data-color="badge"></div>
-      </h1>
-      <nav>
-        
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-        
-      </nav>
-      
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>You Are What You Eat!</title>
+    <link rel='stylesheet' href='/css/jass.css' />
+    <link rel='stylesheet' href='/css/style.css' />
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+  </head>
+
+  <body>
+
+    <div class='flex-column justify-space-around'>
+      <header class='display-flex justify-space-between align-center p-2'>
+        <h1>
+          <a href='/'>You Are What You Eat!</a>
+          <div id='edamam-badge' data-color='badge'></div>
+        </h1>
+        <nav>
+
+          <!-- Conditionally render login or logout links -->
+          {{#if logged_in}}
+            <button class='no-button' id='logout'>logout</button>
+          {{else}}
+            <a href='/login'>login</a>
+          {{/if}}
+
+        </nav>
+
+      </header>
+      <main class='container container-fluid mt-5'>
+        <!-- Render the sub layout -->
+        {{{body}}}
+      </main>
+      <footer>
+
+      </footer>
+    </div>
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+  </body>
 
 </html>
