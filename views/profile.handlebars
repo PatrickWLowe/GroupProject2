@@ -1,11 +1,17 @@
-<div class='row'>
-  <div class='col-auto'>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="./css/profilepage.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/profile.js"></script>
+
+<div class="row">
+  <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
 
-<div class='row mt-4'>
-  <div class='col-md-6'>
+<div class="row mt-4">
+  <div class="col-md-6">
     <h3>Add new food:</h3>
 
     <form class='form new-food-form'>
@@ -27,8 +33,7 @@
       </div>
     </form>
   </div>
-
-  <div class='col-md-6'>
+  <div class="col-md-6">
     <div>
       <canvas
         id='myChart'
@@ -64,13 +69,8 @@
       <h3>Totals: </h3>
       <p>Calories: {{format_toInt totalCalories}}</p>
       <p>Carbs: {{format_toInt totalCarbs}}</p>
-      <p>Protien: {{format_toInt totalProtein}}</p>
+      <p>Protein: {{format_toInt totalProtein}}</p>
       <p>Fats: {{format_toInt totalFat}}</p>
     </div>
-
   </div>
-
 </div>
-
-<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-<script src='./js/profile.js'></script>
