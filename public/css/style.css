@@ -36,6 +36,7 @@ header, .project:not(:last-child) {
   -webkit-transition: opacity 0.5s linear;
 } 
 .food-list{
-  height: 35vh;
+  height: 30vh;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
