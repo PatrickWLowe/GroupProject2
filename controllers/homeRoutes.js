@@ -14,23 +14,40 @@ router.get('/', withAuth, async (req, res) => {
     const foodData = await Food.findAll({
       where: {
         date_added: dayjs().format('MM/DD/YYYY'),
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
       },
       include: [
         {
           model: User,
           attributes: ['name'],
-            
         },
       ],
     });
-    
-    const totalCalories = await Food.sum('calories', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
-    const totalProtein = await Food.sum('protein', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
-    const totalFat = await Food.sum('fat', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
-    const totalCarbs = await Food.sum('carbs', {where: {date_added: dayjs().format('MM/DD/YYYY'), user_id: req.session.user_id}});
 
-  
+    const totalCalories = await Food.sum('calories', {
+      where: {
+        date_added: dayjs().format('MM/DD/YYYY'),
+        user_id: req.session.user_id,
+      },
+    });
+    const totalProtein = await Food.sum('protein', {
+      where: {
+        date_added: dayjs().format('MM/DD/YYYY'),
+        user_id: req.session.user_id,
+      },
+    });
+    const totalFat = await Food.sum('fat', {
+      where: {
+        date_added: dayjs().format('MM/DD/YYYY'),
+        user_id: req.session.user_id,
+      },
+    });
+    const totalCarbs = await Food.sum('carbs', {
+      where: {
+        date_added: dayjs().format('MM/DD/YYYY'),
+        user_id: req.session.user_id,
+      },
+    });
 
     //const totals = totalData.get({ plain: true });
     const foods = foodData.map((food) => food.get({ plain: true }));
@@ -43,13 +60,12 @@ router.get('/', withAuth, async (req, res) => {
       totalCarbs,
       foods,
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 router.get('/food/:id', withAuth, async (req, res) => {
   try {
@@ -67,7 +83,7 @@ router.get('/food/:id', withAuth, async (req, res) => {
 
     res.render('food', {
       ...food,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);

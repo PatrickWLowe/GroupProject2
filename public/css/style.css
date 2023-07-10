@@ -1,4 +1,5 @@
-header, .project:not(:last-child) {
+header,
+.project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
@@ -23,19 +24,20 @@ header, .project:not(:last-child) {
   margin-left: -5px;
 }
 
- .food-delete{
-  opacity:0;
-  transition:opacity 0.5s linear;
+.food-delete {
+  opacity: 0;
+  transition: opacity 0.5s linear;
   -moz-transition: opacity 0.5s linear;
   -webkit-transition: opacity 0.5s linear;
 }
 .food-name:hover .food-delete {
   opacity: 1;
-  transition:opacity 0.5s linear;
+  transition: opacity 0.5s linear;
   -moz-transition: opacity 0.5s linear;
   -webkit-transition: opacity 0.5s linear;
-} 
-.food-list{
-  height: 35vh;
+}
+.food-list {
+  height: 30vh;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
