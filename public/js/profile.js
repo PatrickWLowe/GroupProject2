@@ -7,35 +7,37 @@ const newFormHandler = async (event) => {
   const food_amount = document.querySelector('#food-weight').value.trim();
 
   if (name && food_amount) {
-    const edamamAPIResponse = await fetch (`/api/edamam` , {
+    const edamamAPIResponse = await fetch(`/api/edamam`, {
       method: 'POST',
-      body: JSON.stringify({ 
-        name, 
+      body: JSON.stringify({
+        name,
         food_amount,
       }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    
-    if ( edamamAPIResponse.ok){
-      
+
+    if (edamamAPIResponse.ok) {
       const edamamAPIResponseParsed = await edamamAPIResponse.json();
       console.log(edamamAPIResponseParsed);
-      const protein = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.PROCNT || 0;
-      const calories = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.ENERC_KCAL || 0;
+      const protein =
+        edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.PROCNT || 0;
+      const calories =
+        edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.ENERC_KCAL || 0;
       const fat = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.FAT || 0;
-      const carbs = edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.CHOCDF || 0; 
-      const image = edamamAPIResponseParsed?.parsed[0]?.food?.image || 0; 
+      const carbs =
+        edamamAPIResponseParsed?.parsed[0]?.food?.nutrients?.CHOCDF || 0;
+      const image = edamamAPIResponseParsed?.parsed[0]?.food?.image || 0;
 
-      if (image == 0){
+      if (image == 0) {
         alert('Failed to create food');
         return;
       }
       const response = await fetch(`/api/foods`, {
         method: 'POST',
-        body: JSON.stringify({ 
-          name, 
+        body: JSON.stringify({
+          name,
           image,
           food_amount,
           protein,
@@ -56,40 +58,41 @@ const newFormHandler = async (event) => {
     } else {
       alert('Failed to create food');
     }
-    
   }
 };
 
 async function renderChart() {
-  const response = await fetch (`/api/getTotals` , {
+  const response = await fetch(`/api/getTotals`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-    }
-  }).then((response) => response.json())
-  .then((data) => data)
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   console.log(response);
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
-    
     type: 'pie',
     data: {
       labels: ['Carbohydrates', 'Fats', 'Protein'],
-      datasets: [{
-        label: '# of grams',
-        data: [response.totalCarbs, response.totalFat, response.totalProtein],
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: '# of grams',
+          data: [response.totalCarbs, response.totalFat, response.totalProtein],
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
       plugins: {
         legend: {
-          display: false
-        }
+          display: false,
+        },
       },
       responsive: false,
       // scales: {
@@ -100,12 +103,9 @@ async function renderChart() {
       //     beginAtZero: true
       //   }
       // }
-    }
+    },
   });
 }
-
-
-
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {

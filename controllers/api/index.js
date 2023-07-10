@@ -11,6 +11,4 @@ router.use('/edamam', edamamRoutes);
 router.use('/getTotals', getTotals);
 router.use('/getDay', getDay);
 
-
-
 module.exports = router;
