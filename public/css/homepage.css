@@ -22,8 +22,11 @@ body{
     clear: both;
   }
 
-  @media screen and (max-width: 900px) {
-    .column {
+  @media screen and (max-width: 600px) {
+    .column-1 {
+      width: 100%;
+    }
+    .column-2 {
       width: 100%;
     }
   }
@@ -74,17 +77,35 @@ body{
   .signupButton{
     display: block;
     width: 100%;
-    border: none;
-    background-color: #04AA6D;
     padding: 14px 28px;
-    font-size: 60px;
-    font-family: fantasy;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #6fcd75;
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
+    border: none;
+    color: #eeeeee;
     cursor: pointer;
+    display: inline-block;
+    font-size: 30px;
     text-align: center;
+    text-decoration: none;
+    animation: glowing 1300ms infinite;
   }
 
-  .startSignUp{
-    background-color: blue;
+  @keyframes glowing {
+    0% {
+      background-color: #059aa8;
+      box-shadow: 0 0 3px #058da8;
+    }
+    50% {
+      background-color: #19ade8;
+      box-shadow: 0 0 10px #19b1e8;
+    }
+    100% {
+      background-color: hsl(206, 94%, 34%);
+      box-shadow: 4px 0 3px #0585a8;
+    }
   }
+ 
 
   
