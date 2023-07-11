@@ -31,17 +31,27 @@
 #
 ## Acceptance Criteria
 #### GIVEN a place to log the food you eat
+#### WHEN I log in to my profile or sign up for a new profile
+#### THEN I am taken to a new Page where I can search for the food I have eaten that day
 #### WHEN I enter the amount of a certain kind of food I ate
-#### THEN I am presented with the nutritional value and a picture of that food
+#### THEN I am presented with the nutritional value and it is displayed on pie chart
+#### WHEN I add another food type 
+#### THEN the nutritional value of that food is added to the total amount 
+#### WHEN I click on the Food items that were logged
+#### THEN I am taken to another page showing the nutritional value of that specific food individually 
+
+
 
 ## Screenshot of Website 
 
-![Deployed Webpage Screenshot](./assets/ScreenshotYAWYE.png)
+![Deployed Webpage Screenshot](./images/Screenshot%202023-07-10%20173046.png)
+![Deployed Webpage Screenshot](./images/Screenshot%202023-07-10%20173233.png)
+![Deployed Webpage Screenshot](./images/Screenshot%202023-07-10%20173314.png)
 
 ## References 
 
-#### https://www.pexels.com/api/
-#### https://api.nal.usda.gov
+#### https://www.edamam.com/
+#### https://www.chartjs.org/
 #### 
 #### 
 #### 
@@ -49,4 +59,4 @@
 
 ## Link to the deployed website 
 
-### https://patrickwlowe.github.io/Super-Team-Project/
+### [You Are What You Eat](https://thawing-eyrie-67221-bd008bd79efe.herokuapp.com/)
