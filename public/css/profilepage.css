@@ -1,9 +1,9 @@
-body{
-    background-image: url(https://www.rosannadavisonnutrition.com/wp-content/uploads/2013/11/Nutrition-Background.jpg);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
+body {
+  background-image: url(https://www.rosannadavisonnutrition.com/wp-content/uploads/2013/11/Nutrition-Background.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
